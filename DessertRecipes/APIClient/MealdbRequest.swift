@@ -63,9 +63,3 @@ enum Endpoint: String, CaseIterable {
 /// Init different functions for program usage
 /// getAllDesserts: return all dessert meals
 /// getDessertDetail: return dessert detail based on id
-extension MealdbRequest {
-    static let getAllDesserts = MealdbRequest(
-        endpoint: .filter,
-        queryItems: ["c": "Dessert"]
-    )
-}

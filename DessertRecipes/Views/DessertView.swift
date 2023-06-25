@@ -9,25 +9,27 @@ import SwiftUI
 
 struct DessertView: View {
     
-    @ObservedObject var dessertViewModel: DessertViewModel
+    @StateObject private var dessertViewModel = DessertViewModel()
     
     var body: some View {
-        Text("Testing")
+        Text("Desserts")
         NavigationStack {
-            List (self.dessertViewModel.meals, id: \.idMeal) { dessert in
-                DessertRowView(dessert: dessert)
+            List (dessertViewModel.dessertList, id: \.idMeal) { dessert in
+                NavigationLink {
+                    DessertDetailView(dessert: dessert)
+                } label: {
+                    DessertRowView(dessert: dessert)
+                }
             }
         }
         .onAppear {
-            self.dessertViewModel.getAllDesserts()
-            print(self.dessertViewModel.meals)
+            dessertViewModel.getAllDesserts()
         }
     }
 }
 
 struct DessertView_Previews: PreviewProvider {
     static var previews: some View {
-        let dessertViewModel = DessertViewModel()
-        DessertView(dessertViewModel: dessertViewModel)
+        DessertView()
     }
 }

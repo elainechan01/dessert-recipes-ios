@@ -32,17 +32,32 @@ final class DessertRecipesTests: XCTestCase {
     
     /// Module: APIClient > MealdbService
     /// Function to test MealdbService get all desserts
-    func testBuildRequestFromService() {
+    func testFilterDesserts() {
         let request = MealdbRequest(endpoint: .filter, queryItems: ["c" : "Dessert"])
         MealdbService.shared.run(request, expecting: DessertList.self) { result in
             switch result {
-            case .failure(let error):
-                XCTFail(String(describing: error))
             case .success(let model):
-                XCTAssertNotNil(String(describing: model))
+                if model.meals.count > 0 {
+                    print("Test model \(model.meals)")
+                }
+            case .failure(let error):
+                XCTFail("Test error: \(error)")
             }
         }
     }
     
-
+    /// Module: APIClient > MealdbService
+    /// Function to test MealdbService get dessert detail based on id
+    func testLookupDessert() {
+        let request = MealdbRequest(endpoint: .lookup, queryItems: ["i" : "53042"])
+        MealdbService.shared.run(request, expecting: DessertDetailList.self) { result in
+            switch result {
+            case .success(let model):
+                XCTAssertNotNil(model)
+            case .failure(let error):
+                XCTFail("Test error: \(error)")
+            }
+        }
+    }
+    
 }
