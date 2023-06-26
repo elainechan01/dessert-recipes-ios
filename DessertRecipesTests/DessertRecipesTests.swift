@@ -29,6 +29,11 @@ final class DessertRecipesTests: XCTestCase {
         let request = MealdbRequest(endpoint: .filter, queryItems: ["c" : "Dessert"])
         XCTAssertEqual(request.url, URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"))
     }
+    /// Function to test MealdbRequest create API request URL to lookup dessert detail based on id
+    func testBuildLookupDessertDetailUrl() {
+        let request = MealdbRequest(endpoint: .lookup, queryItems: ["i" : "53042"])
+        XCTAssertEqual(request.url, URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=53042"))
+    }
     
     /// Module: APIClient > MealdbService
     /// Function to test MealdbService get all desserts
@@ -69,28 +74,28 @@ final class DessertRecipesTests: XCTestCase {
     /// Module: ViewModels > DessertViewModel
     /// Function to test DessertViewModel filter all desserts
     func testFilterDessertsAsPublished() {
-        let expectation = XCTestExpectation(description: "Published var is not nil")
         let dessertVM = DessertViewModel()
-        let cancellable = dessertVM.$dessertList
-            .dropFirst()
-            .sink(receiveValue: { output in
-                XCTAssert(output.count > 0)
-            })
+        let expectation = XCTestExpectation()
         dessertVM.getAllDesserts()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            XCTAssert(dessertVM.dessertList.count > 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 3.0)
     }
     
     /// Module: ViewModels > DessertDetailViewModel
     /// Function to test DessertDetailViewModel to lookup a dessert detail based on id
-    func testLookupDessertDetailAsPublished() {
+    func testTestLookupDessertDetailAsPublished() {
         let dessert = Dessert(strMeal: "Portuguese prego with green piri-piri", strMealThumb: "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg", idMeal: "53042")
-        let expectation = XCTestExpectation(description: "Published var is not nil")
         let dessertDetailVM = DessertDetailViewModel(dessert: dessert)
-        let cancellable = dessertDetailVM.$dessertDetail
-            .dropFirst()
-            .sink(receiveValue: { output in
-                XCTAssertEqual(output?.strArea, "Portuguese")
-            })
         dessertDetailVM.getDessertDetails()
+        let expectation = XCTestExpectation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            XCTAssertEqual(dessertDetailVM.dessertDetail?.strArea, "Portuguese")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 3.0)
     }
     
 }
