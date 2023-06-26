@@ -10,7 +10,11 @@ import SwiftUI
 
 final class DessertViewModel: ObservableObject {
 
-    @Published var dessertList: [Dessert] = []
+    @Published var dessertList: [Dessert]
+    
+    init () {
+        self.dessertList = []
+    }
 
     public func getAllDesserts() {
         let request = MealdbRequest(endpoint: .filter, queryItems: ["c": "Dessert"])

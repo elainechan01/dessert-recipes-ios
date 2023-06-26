@@ -13,6 +13,7 @@ final class DessertDetailViewModel: ObservableObject {
     @Published var dessertDetail: DessertDetail? = nil
     
     private let dessert: Dessert
+    
     init (dessert: Dessert) {
         self.dessert = dessert
     }
@@ -24,9 +25,9 @@ final class DessertDetailViewModel: ObservableObject {
             case .failure(let error):
                 print("Error found: \(error)")
             case .success(let model):
-                let dessertDetail = model.meals
+                let dessertDetail = model.meals.first
                 DispatchQueue.main.async {
-                    self?.dessertDetail = dessertDetail.first
+                    self?.dessertDetail = dessertDetail
                 }
             }
         }
