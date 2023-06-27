@@ -111,7 +111,7 @@ final class DessertRecipesTests: XCTestCase {
     
     /// Module: ViewModels > DessertDetailViewModel
     // Function to test DessertDetailViewModel to lookup a dessert detail based on id with a mock run to lookup idMeal 53042
-    func testTestLookupDessertDetailAsPublished() {
+    func testLookupDessertDetailAsPublished() {
         // Mock dessert to lookup
         let dessert = Dessert(strMeal: "Portuguese prego with green piri-piri", strMealThumb: "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg", idMeal: "53042")
         // Mock DessertDetailViewModel
