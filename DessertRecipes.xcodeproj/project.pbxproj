@@ -22,8 +22,7 @@
 		A0C14A172A47B79100D87DFF /* DessertRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C14A162A47B79100D87DFF /* DessertRowView.swift */; };
 		A0C14A192A47CC9C00D87DFF /* DessertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C14A182A47CC9C00D87DFF /* DessertDetailView.swift */; };
 		A0F8084B2A4818D300E4D82E /* DessertDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F8084A2A4818D300E4D82E /* DessertDetailViewModel.swift */; };
-		A0F8084F2A4953C600E4D82E /* DessertDetailCacheEntryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F8084E2A4953C600E4D82E /* DessertDetailCacheEntryObject.swift */; };
-		A0F808512A49543C00E4D82E /* NSCache+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F808502A49543C00E4D82E /* NSCache+Subscript.swift */; };
+		A0F8084F2A4953C600E4D82E /* DessertDetailCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F8084E2A4953C600E4D82E /* DessertDetailCacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +62,7 @@
 		A0C14A162A47B79100D87DFF /* DessertRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertRowView.swift; sourceTree = "<group>"; };
 		A0C14A182A47CC9C00D87DFF /* DessertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailView.swift; sourceTree = "<group>"; };
 		A0F8084A2A4818D300E4D82E /* DessertDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailViewModel.swift; sourceTree = "<group>"; };
-		A0F8084E2A4953C600E4D82E /* DessertDetailCacheEntryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailCacheEntryObject.swift; sourceTree = "<group>"; };
-		A0F808502A49543C00E4D82E /* NSCache+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCache+Subscript.swift"; sourceTree = "<group>"; };
+		A0F8084E2A4953C600E4D82E /* DessertDetailCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailCacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,8 +207,7 @@
 		A0F8084D2A49539700E4D82E /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				A0F8084E2A4953C600E4D82E /* DessertDetailCacheEntryObject.swift */,
-				A0F808502A49543C00E4D82E /* NSCache+Subscript.swift */,
+				A0F8084E2A4953C600E4D82E /* DessertDetailCacheManager.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -348,13 +345,12 @@
 				A015435F2A4683F70065091B /* AppDelegate.swift in Sources */,
 				A01543BC2A4739800065091B /* MealdbService.swift in Sources */,
 				A0F8084B2A4818D300E4D82E /* DessertDetailViewModel.swift in Sources */,
-				A0F8084F2A4953C600E4D82E /* DessertDetailCacheEntryObject.swift in Sources */,
+				A0F8084F2A4953C600E4D82E /* DessertDetailCacheManager.swift in Sources */,
 				A0C14A112A47A33900D87DFF /* DessertView.swift in Sources */,
 				A01543962A4687390065091B /* Dessert.swift in Sources */,
 				A01543B82A4739740065091B /* MealdbRequest.swift in Sources */,
 				A01543612A4683F70065091B /* SceneDelegate.swift in Sources */,
 				A0C14A172A47B79100D87DFF /* DessertRowView.swift in Sources */,
-				A0F808512A49543C00E4D82E /* NSCache+Subscript.swift in Sources */,
 				A0C14A0F2A479D5400D87DFF /* DessertViewModel.swift in Sources */,
 				A0C14A192A47CC9C00D87DFF /* DessertDetailView.swift in Sources */,
 			);

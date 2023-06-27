@@ -17,7 +17,9 @@ struct DessertList: Codable, Hashable {
     let meals: [Dessert]
 }
 
-struct DessertDetail: Codable, Hashable {
+struct DessertDetail: Codable, Hashable, CaseIterable {
+    static var allCases: [DessertDetail] = []
+    
     let idMeal: String
     let strMeal: String
     let strDrinkAlternate: String?

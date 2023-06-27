@@ -10,12 +10,16 @@ import Foundation
 /// Class to build a HTTP request to the MealDB API
 final class MealdbRequest {
     
+    /// Variables instantiation and private initialization method
     // Set URLComponents: baseURL
     private struct Constants {
         static let scheme = "https"
         static let host = "themealdb.com"
     }
-    // Set URL Components: path and parameters
+    /// Private init to set endpoint and parameters
+    /// - Parameters
+    ///     - endpoint: type of endpoint based on Endpoint enum
+    ///     - (optional) queryItems: additional parameters
     private let path: String
     private let queryItems: [URLQueryItem]
     init (
@@ -23,6 +27,7 @@ final class MealdbRequest {
         queryItems: [String:String] = [:]
     ) {
         self.path = "/api/json/v1/1/" + endpoint.rawValue
+        // Store parameters as list of URLQueryItem
         self.queryItems = queryItems.map{
             return URLQueryItem(name: "\($0)", value: "\($1)")
         }
@@ -37,19 +42,20 @@ final class MealdbRequest {
         if !queryItems.isEmpty{
             urlComponents.queryItems = queryItems
         }
+        // Retrieve url from URLComponents
         return urlComponents.url
     }
     
 }
 
 /// Handle different query use cases. Reference: https://themealdb.com/api.php @ June 2023
-/// filter: return all meals based on attribute (e.g. area, category)
-/// search: return meal details based on name
-/// lookup: return meal details based on id
-/// random: return a random meal's details
-/// randomSelection: return a selection of 10 random meals
-/// categories: return meal categories
-/// list: return list of attributes (e.g. area, category)
+/// - filter: return all meals based on attribute (e.g. area, category)
+/// - search: return meal details based on name
+/// - lookup: return meal details based on id
+/// - random: return a random meal's details
+/// - randomSelection: return a selection of 10 random meals
+/// - categories: return meal categories
+/// - list: return list of attributes (e.g. area, category)
 enum Endpoint: String, CaseIterable {
     case filter = "filter.php"
     case search = "search.php"
@@ -59,7 +65,3 @@ enum Endpoint: String, CaseIterable {
     case categories = "categories.php"
     case list = "list.php"
 }
-
-/// Init different functions for program usage
-/// getAllDesserts: return all dessert meals
-/// getDessertDetail: return dessert detail based on id

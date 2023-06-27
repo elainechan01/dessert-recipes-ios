@@ -7,12 +7,15 @@
 
 import SwiftUI
 
+// SwiftUI view to display dessert meal in a row
 struct DessertRowView: View {
     
+    // Data passed from parent view
     var dessert: Dessert
     
     var body: some View {
         HStack {
+            // Display meal thumbnail or placeholder loader if not ready
             AsyncImage(url: URL(string: dessert.strMealThumb), content: { image in
             image.resizable()
             }, placeholder: {
@@ -20,6 +23,7 @@ struct DessertRowView: View {
             })
                 .frame(width: 100, height: 100)
                 .clipShape(Circle())
+            // Display meal name
             Text(dessert.strMeal)
         }
     }
