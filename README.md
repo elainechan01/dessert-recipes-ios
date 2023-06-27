@@ -6,9 +6,9 @@
 iOS App to display desserts from [themealdb.com](https://themealdb.com)
 
 # Getting Started
-1. The app is compatible with the latest XCode (version 14.0 or above).
+1. The app is compatible with the latest XCode (version 14.0 or above)
 2. Download the project files from the repository `git clone https://github.com/elainechan01/dessert-recipes-ios.git`
-3. Open the project files in XCode.
+3. Open the project files in XCode
 4. Run the active scheme
 
 # Architecture
@@ -41,7 +41,7 @@ The app can be tested using the built-in framework XCTest. Tests have been creat
 - testFilterDesserts
 - testLookupDessertDetail
 - testFilterDessertsAsPublished
-- testTestLookupDessertDetailAsPublished
+- testLookupDessertDetailAsPublished
 ### API
 
 [TheMealDB](https://themealdb.com/api)
